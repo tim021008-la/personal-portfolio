@@ -1244,18 +1244,31 @@
 
         <section class="contact-form">
 
+
+
+
           <h3 class="h3 form-title">Contact Form</h3>
-          <form action="send_email.php" method="post" class="form" data-form>
+          <form method="post" action="https://forms.un-static.com/forms/e04510e0cdf29957cdcdb59a9039768bb708a776"
+            class="form" data-form>
+
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              <input id="name" name="name" placeholder="Please enter your name" type="text" required="required"
+                class="form-input" data-form-input>
+              <input id="email" name="email" placeholder="Your e-mail address" type="email" required="required"
+                class="form-input" data-form-input>
             </div>
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
-            <button class="form-btn" type="submit" disabled data-form-btn>
+
+            <textarea id="message" name="message" required="required" class="form-input" placeholder="Your Message"
+              data-form-input></textarea>
+
+            <button name="submit" type="submit" class="form-btn" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
-          </form> 
+
+          </form>
+
+          <h3>Powerd by <a style="color: #FCD96F" rel="nofollow" href="Un-static Forms">Un-static Forms</a></h3>
         </section>
 
       </article>
