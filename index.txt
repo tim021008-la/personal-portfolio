@@ -1,24 +1,24 @@
-vCard - Personal Portfolio
+Personal Portfolio
 
 # sidebar
 
-alt = Richard hanrick
-Richard hanrick
-Web developer
+alt = Tim Niklas Lauterbach
+Tim Niklas Lauterbach
+Software Engineer
 
 Show Contacts
 
 Email
-richard@example.com
+lauterbachtim1008@gmail.com
 
 Phone
-+1 (213) 352-2795
++49 152 5429 6459
 
 Birthday
-June 23, 1982
+August 10, 2002
 
 Location
-Sacramento, California, USA
+Wetzlar, Hesse, Germany
 
 # navbar
 
@@ -32,9 +32,14 @@ Contact
 
 About me
 
-I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media. I enjoy turning complex problems into simple, beautiful and intuitive designs.
+I'm a Software Engineer based in Wetzlar, Hesse, Germany, specializing in Software Architecture, Development, and Website Design. With a passion for crafting efficient and reliable solutions, I have experience in creating innovative software products and engaging web experiences.
 
-My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring across your message and identity in the most creative way. I created web design for many famous brand companies.
+Driven by a desire to collaborate and tackle complex challenges, I thrive in team environments where I can contribute to the bigger picture of a project. My approach to design is characterized by minimalism, speed, and reliability, ensuring that every solution I deliver is both sleek and robust.
+
+In my diverse portfolio, you'll find a range of projects spanning from Real Estate Agent websites to AI-related software and optimizations. From developing AI-driven solutions to crafting vscode extensions and Discord bots, my expertise extends to network-related software in the automotive industry.
+
+Whether you need a website, streamlined software architecture, or AI solutions, I'm here to bring your ideas to life. Let's collaborate and build something remarkable together.
+
 
 
 ## service
