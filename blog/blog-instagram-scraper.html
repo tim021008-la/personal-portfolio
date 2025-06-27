@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post - Instagram Location Scraper</title>
+
+    <!--
+    - favicon
+  -->
+    <link rel="shortcut icon" href="../assets/images/logo.ico" type="image/x-icon">
+
+    <!--
+    - custom css link
+  -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <!--
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<style>
+        /* Additional styles specific to the blog post page for better layout */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+
+        .back-to-home {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--orange-yellow-crayola);
+            font-size: var(--fs-6);
+            font-weight: var(--fw-500);
+            transition: var(--transition-1);
+        }
+
+        .back-to-home:hover {
+            color: var(--light-gray);
+        }
+
+        .blog-post-full-content {
+            color: var(--light-gray);
+            font-size: var(--fs-6);
+            font-weight: var(--fw-300);
+            line-height: 1.6;
+        }
+
+        .blog-post-full-content h3 {
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .blog-post-full-content p {
+            margin-bottom: 15px;
+        }
+
+        .blog-post-full-content ul,
+        .blog-post-full-content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .blog-post-full-content li {
+            margin-bottom: 10px;
+            list-style-type: disc;
+        }
+
+        .blog-post-full-content ol li {
+            list-style-type: decimal;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <article class="active" style="width: 100%;">
+
+            <header>
+                <h2 class="h2 article-title">From Brittle to Robust: The Journey of Building a Resilient Instagram
+                    Scraper</h2>
+                <div class="blog-meta" style="margin-top: 15px; justify-content: flex-start; margin-bottom: 25px;">
+                    <p class="blog-category">Node.js / Puppeteer</p>
+                    <span class="dot"></span>
+                    <time datetime="2024-06-27">June 27, 2024</time>
+                </div>
+            </header>
+
+            <figure class="blog-banner-box">
+                <img src="https://placehold.co/800x400/22252a/FCD96F?text=Instagram%20Location%20Scraper"
+                    alt="Instagram Location ID Scraper Project" loading="lazy">
+            </figure>
+
+            <div class="blog-post-full-content">
+
+                <h3>Introduction</h3>
+                <p>
+                    In the world of data collection, scraping modern web applications presents a unique set of
+                    challenges. Websites like Instagram are not static pages; they are dynamic, interactive
+                    platforms designed to deliver a seamless user experience, but this very design makes
+                    automated data extraction a complex puzzle. This post details the journey of creating the
+                    Instagram Location Scraper, a project that evolved from a simple script into a robust,
+                    resilient, and polite data collection tool.
+                </p>
+
+                <h3>The Problem: More Than Meets the Eye</h3>
+                <p>
+                    The initial goal was simple: get a list of all location URLs from Instagram's "Explore
+                    Locations" pages. A quick XPath script seemed like the answer, but it barely scratched the
+                    surface. The reality was a multi-layered problem:
+                </p>
+                <ol>
+                    <li><strong>Dynamic Content:</strong> Locations aren't all loaded at once. They appear as
+                        you scroll or navigate through pages.</li>
+                    <li><strong>Systematic Pagination:</strong> Even scrolling has its limits. The most
+                        reliable way to get all data is by navigating through numbered pages (`?page=1`,
+                        `?page=2`, etc.).</li>
+                    <li><strong>Rate-Limiting & IP Blocking:</strong> Sending too many requests too quickly is
+                        a surefire way to get temporarily blocked. The scraper needed to be patient.</li>
+                    <li><strong>Long-Running Task Instability:</strong> A scrape that takes hours is
+                        vulnerable to network glitches, crashes, or other interruptions. Without a way to save
+                        progress, you'd have to start from scratch every time.</li>
+                </ol>
+
+                <h3>The Solution: A Multi-Faceted Approach</h3>
+                <p>
+                    To overcome these hurdles, the scraper was built with several key features using Node.js and
+                    the powerful Puppeteer library:
+                </p>
+                <ul>
+                    <li><strong>Systematic Pagination:</strong> Instead of simulating scrolling, the script
+                        systematically iterates through each page number. It's a more deterministic and reliable
+                        way to ensure no data is missed.</li>
+                    <li><strong>Polite Delays:</strong> To avoid detection and reduce server load, randomized
+                        delays are implemented between page requests and before moving to a new city. This
+                        mimics human browsing patterns.</li>
+                    <li><strong>Exponential Backoff & Retries:</strong> When an error (like a navigation
+                        timeout) occurs, the script doesn't just give up. It retries up to three times.
+                        Crucially, the waiting period between retries doubles with each attempt (e.g., 2s, 4s,
+                        8s). This 'exponential backoff' is highly effective against temporary rate-limiting.
+                    </li>
+                    <li><strong>Session Resumption & Graceful Failure:</strong> The most critical feature for
+                        a long-running task. The script continuously saves its progress to a JSON file. If the
+                        script is stopped or crashes (e.g., after 3 failed retries on a single URL), it saves
+                        all collected data. Upon restarting, it reads this file, determines which cities have
+                        already been scraped, and seamlessly resumes from where it left off.</li>
+                </ul>
+
+                <h3>Conclusion</h3>
+                <p>
+                    The Instagram Location Scraper is more than just a data collection tool; it's a case study
+                    in building resilient automation for the modern web. It demonstrates that with the right
+                    strategies—patience, error handling, and state management—it's possible to create scripts
+                    that can reliably perform complex, long-running tasks.
+                </p>
+                <p>
+                    You can explore the full source code and technical documentation on the official GitHub
+                    repository.
+                </p>
+
+                <a href="https://github.com/tim021008-la/InstagramLocationIdScraper" target="_blank"
+                    class="form-btn" style="margin-top: 25px; width: fit-content;">
+                    <ion-icon name="logo-github"></ion-icon>
+                    <span>View on GitHub</span>
+                </a>
+            </div>
+
+            <a href="../index.html" class="back-to-home">← Back to Home</a>
+
+        </article>
+    </main>
+
+    <!--
+    - ionicon link
+  -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
